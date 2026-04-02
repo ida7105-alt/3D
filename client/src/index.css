@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./styles/animations.css";
+@import "./styles/typography.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -117,8 +119,24 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),

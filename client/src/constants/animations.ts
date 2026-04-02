@@ -1,0 +1,25 @@
+/**
+ * Animation Configuration
+ * Centralized animation timings and parameters
+ */
+
+export const ANIMATION_CONFIG = {
+  FADE_IN_DURATION: 1200,
+  FADE_IN_DELAY_1: 300,
+  FADE_IN_DELAY_2: 600,
+  FADE_IN_DELAY_3: 1000,
+  FADE_IN_DISTANCE: 30,
+  LOADING_DURATION: 2000,
+  TITLE_REVEAL_DELAY: 1000,
+} as const;
+
+export const PARTICLE_ANIMATION_CONFIG = {
+  FADE_IN_DURATION: 2000,
+  FADE_IN_DISTANCE: 500,
+  WAVE_SPEED: 0.025,
+  WAVE_FREQUENCY_1: 0.3,
+  WAVE_FREQUENCY_2: 0.5,
+  WAVE_AMPLITUDE: 120,
+  MOUSE_INFLUENCE: 100,
+  CAMERA_SMOOTH: 0.05,
+} as const;
