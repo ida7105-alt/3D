@@ -64,12 +64,9 @@ export default function Home() {
 
         positions.push(px, py, pz);
 
-        // Color: random gradient colors
+        // Color: cyan/blue gradient (original)
         const color = new THREE.Color();
-        const hue = Math.random();  // 0-1 random hue for full spectrum
-        const saturation = 0.7 + Math.random() * 0.3;  // 0.7-1.0 saturation
-        const lightness = 0.4 + Math.random() * 0.3;   // 0.4-0.7 lightness
-        color.setHSL(hue, saturation, lightness);
+        color.setHSL(0.5 + Math.random() * 0.1, 0.8, 0.5);
         colors.push(color.r, color.g, color.b);
       }
     }
@@ -90,7 +87,7 @@ export default function Home() {
     const texture = new THREE.CanvasTexture(canvas);
 
     const material = new THREE.PointsMaterial({
-      size: 12,
+      size: 21.6,  // Increase by 80% (12 * 1.8 = 21.6)
       sizeAttenuation: true,
       vertexColors: true,
       transparent: true,
