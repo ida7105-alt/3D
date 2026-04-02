@@ -64,9 +64,12 @@ export default function Home() {
 
         positions.push(px, py, pz);
 
-        // Color: cyan/blue gradient
+        // Color: random gradient colors
         const color = new THREE.Color();
-        color.setHSL(0.5 + Math.random() * 0.1, 0.8, 0.5);
+        const hue = Math.random();  // 0-1 random hue for full spectrum
+        const saturation = 0.7 + Math.random() * 0.3;  // 0.7-1.0 saturation
+        const lightness = 0.4 + Math.random() * 0.3;   // 0.4-0.7 lightness
+        color.setHSL(hue, saturation, lightness);
         colors.push(color.r, color.g, color.b);
       }
     }
@@ -119,7 +122,7 @@ export default function Home() {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      timeRef.current += 0.01;
+      timeRef.current += 0.012;  // Increase speed by 20% (0.01 * 1.2 = 0.012)
 
       // Update particle positions with wave effect
       const positionAttribute = geometry.getAttribute('position');
@@ -132,8 +135,8 @@ export default function Home() {
           const pz = y * SEPARATION - (AMOUNTY * SEPARATION) / 2;
 
           // Wave formula with mouse influence - increased amplitude by 50%
-          const wave1 = Math.sin(0.3 * (x + timeRef.current)) * 75;  // 50 -> 75
-          const wave2 = Math.sin(0.5 * (y + timeRef.current)) * 75;  // 50 -> 75
+          const wave1 = Math.sin(0.36 * (x + timeRef.current)) * 75;  // 0.3 * 1.2 = 0.36
+          const wave2 = Math.sin(0.6 * (y + timeRef.current)) * 75;   // 0.5 * 1.2 = 0.6
           const mouseInfluence = mouseRef.current.x * 100;
 
           const py = wave1 + wave2 + mouseInfluence - 400;
