@@ -30,11 +30,11 @@
   opacity: 0;
 }
 
-/* Mobile menu slide in from left */
-@keyframes slideInFromLeft {
+/* Mobile menu slide in from right */
+@keyframes slideInFromRight {
   from {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
   to {
     opacity: 1;
@@ -55,7 +55,7 @@
 }
 
 .mobile-menu-enter {
-  animation: slideInFromLeft 0.4s ease-out forwards;
+  animation: slideInFromRight 0.4s ease-out forwards;
 }
 
 .mobile-menu-exit {
