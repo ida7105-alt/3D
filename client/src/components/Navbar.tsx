@@ -68,14 +68,14 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Slides in from right, slides out to left */}
+      {/* Mobile Menu - Slides in from left, slides out to right */}
       {isMobileMenuOpen && (
         <div 
           className={`md:hidden fixed inset-0 ${NAVBAR_COLORS.MOBILE_BG} backdrop-blur-sm z-30 ${isMenuClosing ? 'mobile-menu-exit' : 'mobile-menu-enter'}`} 
           style={{ 
             animation: isMenuClosing 
-              ? 'slideOutToLeft 0.4s ease-in forwards' // 關閉時：向左滑出
-              : 'slideInFromRight 0.4s ease-out forwards' // 打開時：從右側滑入
+              ? 'slideOutToRight 0.4s ease-in forwards' // 關閉時：向右滑出
+              : 'slideInFromLeft 0.4s ease-out forwards' // 打開時：從左側滑入
           }}
         >
           <div className="flex flex-col items-center justify-center px-8 py-8 gap-8 relative h-full">
