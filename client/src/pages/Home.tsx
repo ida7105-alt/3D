@@ -87,7 +87,7 @@ export default function Home() {
     const texture = new THREE.CanvasTexture(canvas);
 
     const material = new THREE.PointsMaterial({
-      size: 21.6,  // Increase by 80% (12 * 1.8 = 21.6)
+      size: 20,  // Set to 20
       sizeAttenuation: true,
       vertexColors: true,
       transparent: true,
@@ -119,7 +119,7 @@ export default function Home() {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      timeRef.current += 0.012;  // Increase speed by 20% (0.01 * 1.2 = 0.012)
+      timeRef.current += 0.025;  // Faster wave speed
 
       // Update particle positions with wave effect
       const positionAttribute = geometry.getAttribute('position');
@@ -131,9 +131,9 @@ export default function Home() {
           const px = x * SEPARATION - (AMOUNTX * SEPARATION) / 2;
           const pz = y * SEPARATION - (AMOUNTY * SEPARATION) / 2;
 
-          // Wave formula with mouse influence - increased amplitude by 50%
-          const wave1 = Math.sin(0.36 * (x + timeRef.current)) * 75;  // 0.3 * 1.2 = 0.36
-          const wave2 = Math.sin(0.6 * (y + timeRef.current)) * 75;   // 0.5 * 1.2 = 0.6
+          // Wave formula with mouse influence - smooth and flowing
+          const wave1 = Math.sin(0.3 * (x + timeRef.current)) * 120;  // Reduced frequency and amplitude for smoothness
+          const wave2 = Math.sin(0.5 * (y + timeRef.current)) * 120;  // 150 * 0.8 = 120 (20% reduction)
           const mouseInfluence = mouseRef.current.x * 100;
 
           const py = wave1 + wave2 + mouseInfluence - 400;
