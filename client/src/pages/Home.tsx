@@ -75,12 +75,24 @@ export default function Home() {
     geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(colors), 3));
 
     // Create material
+    // Create canvas texture for circular particles
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d')!;
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(32, 32, 32, 0, Math.PI * 2);
+    ctx.fill();
+    const texture = new THREE.CanvasTexture(canvas);
+
     const material = new THREE.PointsMaterial({
-      size: 12,  // 增加 50% (8 * 1.5 = 12)
+      size: 12,
       sizeAttenuation: true,
       vertexColors: true,
       transparent: true,
       opacity: 0.8,
+      map: texture,  // 使用圓形紋理
     });
 
     // Create points
@@ -119,9 +131,9 @@ export default function Home() {
           const px = x * SEPARATION - (AMOUNTX * SEPARATION) / 2;
           const pz = y * SEPARATION - (AMOUNTY * SEPARATION) / 2;
 
-          // Wave formula with mouse influence
-          const wave1 = Math.sin(0.3 * (x + timeRef.current)) * 50;
-          const wave2 = Math.sin(0.5 * (y + timeRef.current)) * 50;
+          // Wave formula with mouse influence - increased amplitude by 50%
+          const wave1 = Math.sin(0.3 * (x + timeRef.current)) * 75;  // 50 -> 75
+          const wave2 = Math.sin(0.5 * (y + timeRef.current)) * 75;  // 50 -> 75
           const mouseInfluence = mouseRef.current.x * 100;
 
           const py = wave1 + wave2 + mouseInfluence - 400;
