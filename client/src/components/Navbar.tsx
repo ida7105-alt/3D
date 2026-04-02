@@ -20,10 +20,11 @@ export const Navbar: React.FC = () => {
 
   const closeMobileMenu = () => {
     setIsMenuClosing(true);
+    // 等待動畫完成後再移除菜單
     setTimeout(() => {
       setIsMobileMenuOpen(false);
       setIsMenuClosing(false);
-    }, 400);
+    }, 450); // 稍微延長以確保動畫完全完成
   };
 
   return (
@@ -67,9 +68,16 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Slides in from right, slides out to left */}
       {isMobileMenuOpen && (
-        <div className={`md:hidden fixed inset-0 ${NAVBAR_COLORS.MOBILE_BG} backdrop-blur-sm z-30 ${isMenuClosing ? 'mobile-menu-exit' : 'mobile-menu-enter'}`} style={{ animation: isMenuClosing ? 'slideOutToLeft 0.4s ease-in forwards' : 'slideInFromRight 0.4s ease-out forwards' }}>
+        <div 
+          className={`md:hidden fixed inset-0 ${NAVBAR_COLORS.MOBILE_BG} backdrop-blur-sm z-30 ${isMenuClosing ? 'mobile-menu-exit' : 'mobile-menu-enter'}`} 
+          style={{ 
+            animation: isMenuClosing 
+              ? 'slideOutToLeft 0.4s ease-in forwards' // 關閉時：向左滑出
+              : 'slideInFromRight 0.4s ease-out forwards' // 打開時：從右側滑入
+          }}
+        >
           <div className="flex flex-col items-center justify-center px-8 py-8 gap-8 relative h-full">
             {NAVBAR_CONFIG.MENU_ITEMS.map((item) => (
               <NavMenuItem
@@ -80,7 +88,7 @@ export const Navbar: React.FC = () => {
               />
             ))}
 
-            {/* Close button */}
+            {/* Close button - Top right corner */}
             <button
               onClick={closeMobileMenu}
               style={{
