@@ -47,7 +47,7 @@ export default function Home() {
     containerRef.current.appendChild(renderer.domElement);
 
     // Particle Wave Setup
-    const SEPARATION = 100;
+    const SEPARATION = 150;  // 增加 50%
     const AMOUNTX = 50;
     const AMOUNTY = 50;
 
@@ -76,7 +76,7 @@ export default function Home() {
 
     // Create material
     const material = new THREE.PointsMaterial({
-      size: 8,
+      size: 12,  // 增加 50% (8 * 1.5 = 12)
       sizeAttenuation: true,
       vertexColors: true,
       transparent: true,
